@@ -1,0 +1,19 @@
+FROM FOLDER As dev
+LABEL version="1.0.0"
+WORKDIR /FOLDER
+RUN python ['-m','pip', 'install', 'alembic','fastapi', 'sqlmodel'] 
+COPY migrations/script.py.mako docker.io/.../FOLDER/migrations/script.py.mako
+COPY migrations/.py docker.io/.../FOLDER/migrations/env.py
+COPY alembic.ini docker.io/.../FOLDER/alembic.ini
+COPY api.py docker.io/.../FOLDER/api.py 
+COPY configurea.py docker.io/.../FOLDER/configurea.py
+COPY database.py docker.io/.../FOLDER/database.py
+COPY db.py docker.io/.../FOLDER/db.py
+COPY main.py docker.io/.../FOLDER/main.py
+COPY onceinalifetime.py docker.io/.../FOLDER/onceinalifetime.py
+COPY openapi.json docker.io/.../FOLDER/openapi.json
+COPY pmodels.py docker.io/.../FOLDER/pmodels.py
+COPY utilit.py docker.io/.../FOLDER/utilit.py
+
+
+RUN pip install alembic fastapi sqlmodel sqlalchemy 

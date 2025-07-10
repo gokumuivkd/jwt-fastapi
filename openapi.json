@@ -1,0 +1,67 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "FastAPI",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/login": {
+      "post": {
+        "parameters": [
+          {
+            "name": "username",
+            "in": "query",
+            "description": "name of the user",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "password",
+            "in": "query",
+            "description": "password",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response"
+          }
+        }
+      }
+    },
+    "/signup": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": { "type": "string" },
+                  "password": { "type": "string" },
+                  "phone": { "type": "string" },
+                  "email": { "type": "string" },
+                  "name": { "type": "string" }
+                },
+                "required": ["username", "email", "password", "name", "phone"]
+              },
+              "example": {
+                "username": "thisisit",
+                "password": "donttextme",
+                "phone": "1231231232",
+                "email": "mailername@maildomain.mail",
+                "name": "Yourname"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
