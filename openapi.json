@@ -16,20 +16,32 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "password",
-            "in": "query",
-            "description": "password",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "password": { "type": "string" }
+                },
+                "required": ["password"]
+              },
+              "example": {
+                "password": "donttextmeas"
+              }
+            }
+          }
+        },
+
         "responses": {
           "200": {
-            "description": "Successful Response"
+            "description": "Successful Response. Access Token and its Type displayed."
+          },
+          "401":{
+            "description": "Invalid Credentials"
           }
         }
       }
@@ -52,8 +64,8 @@
                 "required": ["username", "email", "password", "name", "phone"]
               },
               "example": {
-                "username": "thisisit",
-                "password": "donttextme",
+                "username": "thisisit2",
+                "password": "donttextmeas",
                 "phone": "1231231232",
                 "email": "mailername@maildomain.mail",
                 "name": "Yourname"
@@ -61,6 +73,15 @@
             }
           }
         }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
       }
     }
   }

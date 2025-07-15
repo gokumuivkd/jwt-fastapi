@@ -1,3 +1,4 @@
+""" creates sync/async database engines and provides with session """
 from sqlmodel import create_engine, Session
 #import asyncpg
 #from sqlmodel.ext.asyncio.session import AsyncSession

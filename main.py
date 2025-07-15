@@ -2,29 +2,13 @@ from fastapi import FastAPI
 import json
 from api import api_router
 from sqlmodel import SQLModel
-from db import engine
 
 app = FastAPI()
 app.include_router(api_router)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#=================OPENAPI BELOW==================
+# CRITICAL SECTION
 def custom_openapi():
+    """function always needed to make sure custom openapi_schema is properly established and assigned"""
     if app.openapi_schema:
         return app.openapi_schema
 
@@ -33,6 +17,6 @@ def custom_openapi():
 
     return app.openapi_schema
 
-app.openapi = custom_openapi
+#app.openapi = custom_openapi
 
 

@@ -1,9 +1,8 @@
-from logging.config import fileConfig
-
 from sqlmodel import engine_from_config
 from sqlmodel import pool
 from database import SQLModel
 from alembic import context
+from logging.config import fileConfig
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
@@ -59,9 +58,7 @@ def run_migrations_online() -> None:
     """
     connectable = engine_from_config(
         config.get_section(config.config_ini_section, {}),
-        prefix="sqlmodel."
-        
-    )
+                            prefix="sqlmodel.")
 
     with connectable.connect() as connection:
         context.configure(

@@ -1,9 +1,9 @@
-FROM FOLDER As dev
+FROM Windows 
+
 LABEL version="1.0.0"
 WORKDIR /FOLDER
-RUN python ['-m','pip', 'install', 'alembic','fastapi', 'sqlmodel'] 
 COPY migrations/script.py.mako docker.io/.../FOLDER/migrations/script.py.mako
-COPY migrations/.py docker.io/.../FOLDER/migrations/env.py
+COPY migrations/env.py docker.io/.../FOLDER/migrations/env.py
 COPY alembic.ini docker.io/.../FOLDER/alembic.ini
 COPY api.py docker.io/.../FOLDER/api.py 
 COPY configurea.py docker.io/.../FOLDER/configurea.py
@@ -16,4 +16,4 @@ COPY pmodels.py docker.io/.../FOLDER/pmodels.py
 COPY utilit.py docker.io/.../FOLDER/utilit.py
 
 
-RUN pip install alembic fastapi sqlmodel sqlalchemy 
+RUN pip install requirements.txt
